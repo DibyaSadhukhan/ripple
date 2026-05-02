@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Ripple{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white">
+                <h1 class="h5 mb-0">Login to Ripple</h1>
+            </div>
+
+            <div class="card-body">
+                <p class="text-muted">
+                    Enter your email address. We will send you a one-time login code.
+                </p>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label" for="id_email">Email address</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="id_email"
+                            class="form-control"
+                            placeholder="Enter your email address"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100">
+                        Send OTP
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

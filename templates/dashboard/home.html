@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Ripple Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="p-4 bg-white border rounded-3 shadow-sm">
+            <h1 class="h3 mb-3">Ripple Dashboard</h1>
+
+            <p class="text-muted mb-0">
+                Ripple is the Automation Status &amp; Management Center for tracking contacts,
+                journeys, communications, email automation, external logs, notifications, and audit activity.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-3">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted small">Total Contacts</div>
+                <div class="h4 mb-0">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted small">Failed Emails</div>
+                <div class="h4 mb-0">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted small">External Messages</div>
+                <div class="h4 mb-0">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted small">Unread Notifications</div>
+                <div class="h4 mb-0">0</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
