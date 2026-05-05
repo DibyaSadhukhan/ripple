@@ -5,10 +5,9 @@ from django.conf import settings
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login
-from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.utils import timezone
-
+from .tasks import send_otp_email_task 
 from .forms import EmailOTPRequestForm, EmailOTPVerifyForm
 from .models import EmailOTP
 
@@ -63,7 +62,6 @@ def generate_internal_username(email):
 
     return username
 
-
 def request_otp_view(request):
     if request.user.is_authenticated:
         return redirect("dashboard:home")
@@ -82,13 +80,7 @@ def request_otp_view(request):
                 otp_token=otp_token,
             )
 
-            send_mail(
-                subject="Your Ripple login OTP",
-                message=f"Your Ripple login OTP is {otp_code}. This code will expire soon.",
-                from_email=None,
-                recipient_list=[email],
-                fail_silently=False,
-            )
+            send_otp_email_task.delay(email, otp_code)
 
             request.session["otp_token"] = otp_token
             request.session["otp_email"] = email
